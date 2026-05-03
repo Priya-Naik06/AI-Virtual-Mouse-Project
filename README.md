@@ -1,5 +1,5 @@
 # 🖱️ AI-Based Virtual Mouse Using Hand Gestures
-**MCA Final Year Project | Computer Vision & Human-Computer Interaction**
+**MCA Project | Computer Vision & Human-Computer Interaction**
 
 ## 📖 Overview
 This project enables users to control their computer's mouse cursor using hand gestures captured through a standard webcam. It eliminates the need for physical hardware by leveraging **MediaPipe** for hand landmark detection and **PyAutoGUI** for system-level mouse control.
@@ -12,7 +12,7 @@ This project enables users to control their computer's mouse cursor using hand g
 - **Web Dashboard:** A Flask-based UI to start/stop the service and view logs.
 
 ## 🛠️ Tech Stack
-- **Languages:** Python 3.11+
+- **Languages:** Python 3.10+
 - **Computer Vision:** OpenCV, MediaPipe
 - **Backend:** Flask (Python Web Server)
 - **Frontend:** HTML5, CSS3 (Modern UI), JavaScript
