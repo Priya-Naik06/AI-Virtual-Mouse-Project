@@ -21,4 +21,4 @@ This project enables users to control their computer's mouse cursor using hand g
 ## 🚀 Quick Start
 1. **Clone the project:**
    ```bash
-   git clone [https://github.com/Priya-Naik06/AI-Virtual-Mouse-Project.git]
+   git clone https://github.com/Priya-Naik06/AI-Virtual-Mouse-Project.git
