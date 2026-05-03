@@ -1,22 +1,24 @@
-PROJECT TITLE:
-AI-Based Virtual Mouse Using Hand Gestures
+# 🖱️ AI-Based Virtual Mouse Using Hand Gestures
+**MCA Final Year Project | Computer Vision & Human-Computer Interaction**
 
-LOGIN DETAILS:
-Username: admin
-Password: VMOUSE@2026
+## 📖 Overview
+This project enables users to control their computer's mouse cursor using hand gestures captured through a standard webcam. It eliminates the need for physical hardware by leveraging **MediaPipe** for hand landmark detection and **PyAutoGUI** for system-level mouse control.
 
-HOW TO RUN:
-1. Install libraries:
-   pip install opencv-python mediapipe pyautogui flask numpy
+## ✨ Key Features
+- **Smooth Cursor Movement:** Uses the index finger for high-precision tracking.
+- **Gesture Shortcuts:** - ☝️ **Index Finger Up:** Move Mouse
+  - 🤏 **Index + Thumb Pinch:** Left Click
+  - 🖐️ **Full Hand Open:** Take Screenshot
+- **Web Dashboard:** A Flask-based UI to start/stop the service and view logs.
 
-2. Start backend:
-   cd backend
-   python launcher.py
+## 🛠️ Tech Stack
+- **Languages:** Python 3.11+
+- **Computer Vision:** OpenCV, MediaPipe
+- **Backend:** Flask (Python Web Server)
+- **Frontend:** HTML5, CSS3 (Modern UI), JavaScript
+- **Automation:** PyAutoGUI
 
-3. Open frontend/login.html in browser
-
-4. Login and click "Virtual Mouse Application"
-
-5. Camera opens and mouse control starts
-
-Press 'Q' to stop the virtual mouse.
+## 🚀 Quick Start
+1. **Clone the project:**
+   ```bash
+   git clone [https://github.com/Priya-Naik06/AI-Virtual-Mouse-Project.git](https://github.com/Priya-Naik06/AI-Virtual-Mouse-Project.git)
