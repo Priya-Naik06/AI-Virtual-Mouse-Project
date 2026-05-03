@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Virtual Mouse Dashboard</title>
+
+<style>
+/* ===== THEME VARIABLES ===== */
+:root {
+    --bg: #eef2ff;
+    --card: #ffffff;
+    --text: #1f2937;
+    --primary: #4338ca;
+    --muted: #6b7280;
+}
+
+body.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f8fafc;
+    --primary: #818cf8;
+    --muted: #cbd5f5;
+}
+
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== CONTAINER ===== */
+.dashboard {
+    width: 900px;
+    padding: 35px;
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.header-actions button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.header-actions button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* ===== CARDS ===== */
+.card {
+    background: var(--card);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 22px;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(67,56,202,0.2);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* ===== PLAYFUL START CARD ===== */
+.start-card {
+    text-align: center;
+}
+
+.launch-circle {
+    width: 90px;
+    height: 90px;
+    margin: 20px auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), #6366f1);
+    color: white;
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    transition: transform 0.25s;
+}
+
+.launch-circle:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(99,102,241,0.6); }
+    70%  { box-shadow: 0 0 0 18px rgba(99,102,241,0); }
+    100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+}
+
+.launch-text {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>AI Virtual Mouse Dashboard</h1>
+        <div class="header-actions">
+            <button onclick="toggleTheme()">🌙 Theme</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid">
+
+        <!-- INTERACTIVE START -->
+        <div class="card start-card">
+            <h3>🚀 Start Application</h3>
+            <p>Experience hands-free mouse control using AI</p>
+
+            <div class="launch-circle" onclick="startVM()">▶</div>
+
+            <p id="launchStatus" class="launch-text">
+                Click to launch Virtual Mouse
+            </p>
+        </div>
+
+        <!-- STATUS -->
+        <div class="card">
+            <h3>Application Status</h3>
+            <p>Backend Server: Running</p>
+            <p>Camera Access: Required</p>
+        </div>
+
+        <!-- GESTURES -->
+        <div class="card">
+            <h3>Gesture Guide</h3>
+            <p>☝️ Move Cursor</p>
+            <p>🤏 Left Click</p>
+            <p>✌️ Drag</p>
+            <p>🖖 Scroll</p>
+            <p>🖐 Screenshot</p>
+        </div>
+
+        <!-- STOP -->
+        <div class="card">
+            <h3>Stop Instructions</h3>
+            <p>Press <strong>Q</strong> to stop the application.</p>
+            <p>Close the camera window to exit.</p>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        Created by  <strong>Priya Naik</strong><br>
+        AI Virtual Mouse  
+    </div>
+
+</div>
+
+<script>
+function startVM() {
+    const status = document.getElementById("launchStatus");
+    status.innerText = "Starting Virtual Mouse...";
+
+    fetch("http://127.0.0.1:5000/run")
+        .then(res => res.text())
+        .then(() => {
+            status.innerText = "✅ Virtual Mouse is running";
+        })
+        .catch(() => {
+            status.innerText = "Running";
+        });
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
+
+function logout() {
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
